@@ -16,14 +16,22 @@ class VideoEncoder
     private int $id;
 
     #[ORM\Column]
+    private int $idEncoder;
+
+    #[ORM\Column]
+    private int $idVideo;
+
+    #[ORM\Column]
     private int $size;
 
     #[ORM\Column(length: 50)]
     private string $quality;
 
-    #[ManyToOne(targetEntity: VideoSource::class, inversedBy: "encoders")]
-    #[JoinColumn(name: 'id_video', referencedColumnName: "id")]
-    private VideoSource $videoSource;
+
+
+    // #[ManyToOne(targetEntity: VideoSource::class, inversedBy: "videoEncoders")]
+    // #[JoinColumn(name: "id_video", referencedColumnName: "id")]
+    // private VideoSource $videoSource;
 
     public function __construct(int $id,
                                 int $size,
@@ -38,6 +46,8 @@ class VideoEncoder
     {
         return [
             "id" => $this->id,
+            "idEncoder" => $this->idEncoder,
+            "idVideo" => $this->idVideo,
             "size" => $this->size,
             "quality" => $this->quality,
         ];

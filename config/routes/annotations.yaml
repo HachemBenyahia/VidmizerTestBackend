@@ -1,0 +1,6 @@
+# https://stackoverflow.com/questions/48120939/symfony-4-global-route-prefix
+
+controllers:
+    resource: ../../src/Controller
+    type: annotation
+    prefix: /api

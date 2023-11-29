@@ -15,12 +15,18 @@ class VideoFolder
     #[ORM\Column]
     private int $id;
 
+    #[ORM\Column]
+    private int $idVideo;
+
     #[ORM\Column(length: 255)]
     private string $folderName;
 
-    #[ManyToOne(targetEntity: VideoSource::class, inversedBy: "folders")]
-    #[JoinColumn(name: 'id_video', referencedColumnName: "id")]
-    private VideoSource $videoSource;
+    #[ORM\Column]
+    private int $idFolder;
+
+    // #[ManyToOne(targetEntity: VideoSource::class, inversedBy: "videoFolders")]
+    // #[JoinColumn(name: "id_video", referencedColumnName: "id")]
+    // private VideoSource $videoSource;
 
     public function __construct(int $id,
                                 int $folderName)
@@ -33,7 +39,9 @@ class VideoFolder
     {
         return [
             "id" => $this->id,
+            "idVideo" => $this->idVideo,
             "folderName" => $this->folderName,
+            "idFolder" => $this->idFolder
         ];
     }
 
