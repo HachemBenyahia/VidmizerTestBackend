@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 use App\Entity\EntityInterface;
 
+use App\Entity\VideoEncoder;
+use App\Entity\VideoFolder;
+
 #[ORM\Entity(repositoryClass: VideoSourceRepository::class)]
 class VideoSource implements EntityInterface
 {
@@ -27,6 +30,12 @@ class VideoSource implements EntityInterface
     #[ORM\Column(length: 50)]
     private string $videoQuality;
 
+    #[OneToMany(targetEntity: VideoEncoder::class, mappedBy: "videoSource")]
+    private Collection $videoEncoders;
+
+    #[OneToMany(targetEntity: VideoFolder::class, mappedBy: "videoSource")]
+    private Collection $videoFolders;
+
     public function __construct(int $id,
                        string $name,
                        int $duration,
@@ -37,6 +46,8 @@ class VideoSource implements EntityInterface
         $this->duration = $duration;
         $this->size = $size;
         $this->videoQuality = $videoQuality;
+        $this->videoEncoders = new ArrayCollection();
+        $this->videoFolders = new ArrayCollection();
     }
 
     public function serialize(): array
