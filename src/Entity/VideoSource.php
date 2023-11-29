@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\EntityInterface;
 use App\Entity\VideoEncoder;
 
+use App\Entity\VideoEncoder;
+use App\Entity\VideoFolder;
+
 #[ORM\Entity(repositoryClass: VideoSourceRepository::class)]
 class VideoSource implements EntityInterface
 {
