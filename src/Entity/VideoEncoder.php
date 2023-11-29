@@ -21,7 +21,7 @@ class VideoEncoder
     #[ORM\Column(length: 50)]
     private string $quality;
 
-    #[ManyToOne(targetEntity: Product::class, inversedBy: "encoders")]
+    #[ManyToOne(targetEntity: VideoSource::class, inversedBy: "encoders")]
     #[JoinColumn(name: 'id_video', referencedColumnName: "id")]
     private VideoSource $videoSource;
 
