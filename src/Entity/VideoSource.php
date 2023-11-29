@@ -27,7 +27,7 @@ class VideoSource implements EntityInterface
     #[ORM\Column(length: 50)]
     private string $videoQuality;
 
-    public __construct(int $id,
+    public function __construct(int $id,
                        string $name,
                        int $duration,
                        int $size,
