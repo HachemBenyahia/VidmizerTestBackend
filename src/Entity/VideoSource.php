@@ -28,12 +28,9 @@ class VideoSource implements EntityInterface
     #[ORM\Column(length: 50)]
     private string $videoQuality;
 
-<<<<<<< HEAD
-=======
     #[OneToMany(targetEntity: VideoEncoder::class, mappedBy: "videoSource")]
     private Collection $encoders;
 
->>>>>>> feature/Entity/VideoEncoder
     public function __construct(int $id,
                        string $name,
                        int $duration,
